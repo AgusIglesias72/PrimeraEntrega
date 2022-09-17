@@ -1,28 +1,8 @@
 const path = require('path')
 const nodeExternals = require('webpack-node-externals')
 
-class AccessDependenciesPlugin {
-  apply(compiler) {
-    compiler.hooks.compilation.tap(
-      'AccessDependenciesPlugin',
-      (compilation) => {
-        compilation.hooks.finishModules.tap(
-          'AccessDependenciesPlugin',
-          (modules) => {
-            /*
-        |---------------------------------------------------
-        | Here we go, `modules` is what we're looking for!
-        |---------------------------------------------------
-        */
-          }
-        )
-      }
-    )
-  }
-}
-
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: './src/index.ts',
   target: 'node',
   externals: [nodeExternals()],
@@ -34,7 +14,6 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js'],
   },
-  plugins: [new AccessDependenciesPlugin()],
   module: {
     rules: [
       {
