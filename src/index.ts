@@ -27,5 +27,5 @@ app.use('/api/store/', storeRouter)
 
 app.listen(PORT, () => {
   console.log(`Server running port ${PORT}`)
-  console.log(path.join(__dirname, '../build'))
+  console.log(path.join(__dirname, '/build'))
 })
