@@ -1,7 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './logo.svg'
+import './App.css'
+import { useEffect, useState } from 'react'
 
 function App() {
+  const [data, setData] = useState('')
+
+  useEffect(() => {
+    fetch('/api/products')
+      .then((response) => response.json())
+      .then((data) => setData(data))
+  }, [])
+
   return (
     <div className="App">
       <header className="App-header">
@@ -9,6 +18,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        {JSON.stringify(data)}
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -19,7 +29,7 @@ function App() {
         </a>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
